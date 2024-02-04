@@ -3,6 +3,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import router from "./routes/user.routes.js";
 import dotenv from "dotenv";
+import path from "path"
 
 dotenv.config({
   path: "./.env",
@@ -13,6 +14,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.resolve("build")))
 
 const connectDB = async () => {
   try {
